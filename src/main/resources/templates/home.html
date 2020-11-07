@@ -1,22 +1,64 @@
-<body>
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Coronavirus Report</title>
+		<link rel="stylesheet" type="text/css" href="styles.css">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+			<link th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css}" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />    
+		</head>
+	<body>	
+      <!-- open header -->
+      <div class="jumbotron">
+		<div class="container">
+		    <h1 class="display-4">Reporte de la pandemia de Coronavirus</h1>
+	        <hr class="my-4">
+	        <h2 th:text="${totalReportedCases}"></h2>
+	        <p class="lead">Total de infectados</p>
+	        <!--<p class="lead">
+	          <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+	        </p>-->
+		</div>
+      </div>  
+      <!-- close header -->
+      <!-- open container -->     
+      <div class="container">
+        <div class="row">
+        
+        <!-- open table --> 
+			<table class="table">
+			  <thead>
+			    <tr>
+			      <th scope="col">#</th>
+			      <th scope="col">Estado</th>
+			      <th scope="col">País</th>
+			      <th scope="col">Total de casos</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr th:each="locationstat : ${locationStats}">
+			      <th scope="row"></th>
+			      <td th:text="${locationstat.state}">Onions</td>
+			      <td th:text="${locationstat.country}">2.41</td>
+			      <td th:text="${locationstat.latestTotalCases}">yes</td>
+			    </tr>
+			  </tbody>
+			</table>          
+          <!-- close table -->
+        </div>         
+     </div>
+     <!-- close container -->          
+	    
+		<script th:src="@{https://code.jquery.com/jquery-3.2.1.slim.min.js}" src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js}" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js}" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	</body>
+</html>	
 
 
-<h1>Coronavirus Report</h1>
-
-<span th:text="${testname}"></span>
 
 
-  <table>
-      <tr>
-        <th>STATE</th>
-        <th>COUNTRY</th>
-        <th>Total cases reported</th>
-      </tr>
-      <tr th:each="locationstat : ${locationStats}">
-        <td th:text="${locationstat.state}">Onions</td>
-        <td th:text="${locationstat.country}">2.41</td>
-        <td th:text="${locationstat.latestTotalCases}">yes</td>
-      </tr>
-    </table>
-    
-</body>body>
+
+
+
+
+
