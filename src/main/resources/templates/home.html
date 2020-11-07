@@ -12,8 +12,8 @@
 		<div class="container">
 		    <h1 class="display-4">Reporte de la pandemia de Coronavirus</h1>
 	        <hr class="my-4">
-	        <h2 th:text="${totalReportedCases}"></h2>
-	        <p class="lead">Total de infectados</p>
+	        <h2 th:text="${totalReportedCases}" class="display-4"></h2>
+	        <p class="lead">Casos en el mundo</p>
 	        <p class="lead">Nuevos casos reportados desde ayer:</p>
 	        <p><span th:text="${totalNewCases}"></span></p>
 	        <!--<p class="lead">
@@ -46,11 +46,10 @@
 				  <tbody>
 				    <tr th:each="locationstat : ${locationStats}">
 				      <th scope="row"></th>
-				      <td th:text="${locationstat.state != ''}? ${locationstat.state} : '-'"></td>
-				      
-				      <td th:text="${locationstat.country}"></td>
-				      <td th:text="${locationstat.latestTotalCases}" class="text-center">0</td>
-				      <td th:text="${locationstat.diffFromPrevDay}" class="text-center">0</td>
+				      <td th:text="${locationstat.state != ''}? ${locationstat.state} : '-'" th:classappend="${locationstat.country == 'Argentina'}? argstrong"></td>
+				      <td th:text="${locationstat.country}" th:classappend="${locationstat.country == 'Argentina'}? argstrong"></td>				      				      
+				      <td th:text="${locationstat.latestTotalCases}" th:classappend="${locationstat.country == 'Argentina'}? argstrong" class="text-center">0</td>
+				      <td th:text="${locationstat.diffFromPrevDay}" th:classappend="${locationstat.country == 'Argentina'}? argstrong" class="text-center">0</td>
 				    </tr>
 				  </tbody>
 				</table>          
