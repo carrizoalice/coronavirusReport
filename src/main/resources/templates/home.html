@@ -46,7 +46,8 @@
 				  <tbody>
 				    <tr th:each="locationstat : ${locationStats}">
 				      <th scope="row"></th>
-				      <td th:text="${locationstat.state}"></td>
+				      <td th:text="${locationstat.state != ''}? ${locationstat.state} : '-'"></td>
+				      
 				      <td th:text="${locationstat.country}"></td>
 				      <td th:text="${locationstat.latestTotalCases}" class="text-center">0</td>
 				      <td th:text="${locationstat.diffFromPrevDay}" class="text-center">0</td>
