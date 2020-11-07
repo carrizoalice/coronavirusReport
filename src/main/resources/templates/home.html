@@ -1,0 +1,22 @@
+<body>
+
+
+<h1>holitas</h1>
+
+<span th:text="${testname}"></span>
+
+
+  <table>
+      <tr>
+        <th>STATE</th>
+        <th>COUNTRY</th>
+        <th>Total cases reported</th>
+      </tr>
+      <tr th:each="locationstat : ${locationStats}">
+        <td th:text="${locationstat.state}">Onions</td>
+        <td th:text="${locationstat.country}">2.41</td>
+        <td th:text="${locationstat.latestTotalCases}">yes</td>
+      </tr>
+    </table>
+    
+</body>body>
