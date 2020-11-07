@@ -14,6 +14,8 @@
 	        <hr class="my-4">
 	        <h2 th:text="${totalReportedCases}"></h2>
 	        <p class="lead">Total de infectados</p>
+	        <p class="lead">Nuevos casos reportados desde ayer:</p>
+	        <p><span th:text="${totalReportedCases}"></span></p>
 	        <!--<p class="lead">
 	          <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
 	        </p>-->
@@ -32,14 +34,16 @@
 			      <th scope="col">Estado</th>
 			      <th scope="col">País</th>
 			      <th scope="col">Total de casos</th>
+			      <th scope="col">Cambios desde el último día</th>
 			    </tr>
 			  </thead>
 			  <tbody>
 			    <tr th:each="locationstat : ${locationStats}">
 			      <th scope="row"></th>
-			      <td th:text="${locationstat.state}">Onions</td>
-			      <td th:text="${locationstat.country}">2.41</td>
-			      <td th:text="${locationstat.latestTotalCases}">yes</td>
+			      <td th:text="${locationstat.state}"></td>
+			      <td th:text="${locationstat.country}"></td>
+			      <td th:text="${locationstat.latestTotalCases}" class="text-center">0</td>
+			      <td th:text="${locationstat.diffFromPrevDay}" class="text-center">0</td>
 			    </tr>
 			  </tbody>
 			</table>          

@@ -21,13 +21,14 @@ public class HomeController {
 	CoronavirusDataService conoraVirusDataService;
 	
 	
-	
 	@GetMapping("/")
 	public String home(Model model) {
 		List<LocationStats> allStats = conoraVirusDataService.getAllStats();
 		int totalReportedCases = allStats.stream().mapToInt(stat -> stat.getLatestTotalCases()).sum();
+		int totalNewCases = allStats.stream().mapToInt(stat -> stat.getDiffFromPrevDay()).sum();
 		model.addAttribute("locationStats", conoraVirusDataService.getAllStats());
 		model.addAttribute("totalReportedCases", totalReportedCases);
+		model.addAttribute("totalNewCases", totalNewCases);
 		return "home";
 	}
 }
