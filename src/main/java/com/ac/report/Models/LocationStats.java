@@ -1,6 +1,8 @@
 package com.ac.report.Models;
 
-public class LocationStats {
+import java.util.Comparator;
+
+public class LocationStats{
 	private String state;
 	private String country;
 	private int latestTotalCases;
@@ -32,10 +34,12 @@ public class LocationStats {
 		this.latestTotalCases = latestTotalCases;
 	}
 	
+	
 	@Override
 	public String toString() {
 		return "LocationStats [state=" + state + ", country=" + country + ", latestTotalCases=" + latestTotalCases
 				+ "]";
 	}
-	
+
+
 }

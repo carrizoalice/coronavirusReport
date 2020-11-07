@@ -25,29 +25,36 @@
       <!-- open container -->     
       <div class="container">
         <div class="row">
-        
-        <!-- open table --> 
-			<table class="table">
-			  <thead>
-			    <tr>
-			      <th scope="col">#</th>
-			      <th scope="col">Estado</th>
-			      <th scope="col">País</th>
-			      <th scope="col">Total de casos</th>
-			      <th scope="col">Cambios desde el último día</th>
-			    </tr>
-			  </thead>
-			  <tbody>
-			    <tr th:each="locationstat : ${locationStats}">
-			      <th scope="row"></th>
-			      <td th:text="${locationstat.state}"></td>
-			      <td th:text="${locationstat.country}"></td>
-			      <td th:text="${locationstat.latestTotalCases}" class="text-center">0</td>
-			      <td th:text="${locationstat.diffFromPrevDay}" class="text-center">0</td>
-			    </tr>
-			  </tbody>
-			</table>          
-          <!-- close table -->
+	        <div class=" col-12 mb-4">
+			    <form class="form-inline my-2 my-lg-0 mr-auto">
+			      <input class="form-control mr-sm-2" type="text" placeholder="Search" name="txtsearch">
+			      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+			    </form>			    
+	        </div>
+	        <div class="col-12">
+	        <!-- open table --> 
+				<table class="table">
+				  <thead>
+				    <tr>
+				      <th scope="col">#</th>
+				      <th scope="col">Estado</th>
+				      <th scope="col">País</th>
+				      <th scope="col">Total de casos</th>
+				      <th scope="col">Cambios desde el último día</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr th:each="locationstat : ${locationStats}">
+				      <th scope="row"></th>
+				      <td th:text="${locationstat.state}"></td>
+				      <td th:text="${locationstat.country}"></td>
+				      <td th:text="${locationstat.latestTotalCases}" class="text-center">0</td>
+				      <td th:text="${locationstat.diffFromPrevDay}" class="text-center">0</td>
+				    </tr>
+				  </tbody>
+				</table>          
+	          <!-- close table -->
+	        </div>		
         </div>         
      </div>
      <!-- close container -->          

@@ -7,7 +7,10 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Scanner;
 
 import javax.annotation.PostConstruct;
 
@@ -15,6 +18,8 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+
+import com.ac.report.Comparator.LatestTotalCasesComparator;
 import com.ac.report.Models.LocationStats;
 
 
@@ -54,13 +59,14 @@ public class CoronavirusDataService {
 		    int latestCases = Integer.parseInt(record.get(record.size() - 1));
 		    int prevDayCases = Integer.parseInt(record.get(record.size() - 2));
 		    locationStat.setLatestTotalCases(latestCases);
-		    locationStat.setDiffFromPrevDay(latestCases - prevDayCases);
-
-		    //Collections.sort(locationStat, new LatestTotalCasesComparator());
+		    locationStat.setDiffFromPrevDay(latestCases - prevDayCases);	    
+			    
 		    System.out.println(locationStat);
 		    newStats.add(locationStat);
-		}	
-				
-		this.allStats = newStats;
+		}					
+		
+		Collections.sort(newStats, new LatestTotalCasesComparator());
+		this.allStats = newStats;		
 	}
+
 }
