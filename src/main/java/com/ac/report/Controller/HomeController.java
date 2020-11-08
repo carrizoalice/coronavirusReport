@@ -2,7 +2,10 @@ package com.ac.report.Controller;
 
 
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.ac.report.Models.LocationStats;
 import com.ac.report.Services.CoronavirusDataService;
+import com.ac.report.Services.DateService;
 
 
 
@@ -20,6 +24,8 @@ public class HomeController {
 	@Autowired
 	CoronavirusDataService conoraVirusDataService;
 	
+	@Autowired
+	DateService dateService;
 	
 	@GetMapping("/")
 	public String home(Model model) {
@@ -29,6 +35,12 @@ public class HomeController {
 		model.addAttribute("locationStats", conoraVirusDataService.getAllStats());
 		model.addAttribute("totalReportedCases", totalReportedCases);
 		model.addAttribute("totalNewCases", totalNewCases);
+
+		LocalDate localDate = LocalDate.now();
+		Locale spanishLocale = new Locale("es", "ES");
+	    String dateNow = localDate.format(DateTimeFormatter.ofPattern("EEEE, dd MMMM, yyyy", spanishLocale));	
+	    model.addAttribute("dateNow", dateNow);
+		
 		return "home";
 	}
 }
