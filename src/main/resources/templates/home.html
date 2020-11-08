@@ -13,7 +13,7 @@
 			<p th:text="${dateNow}"></p>
 		    <h1 class="display-4">Reporte de la pandemia de Coronavirus</h1>
 	        <hr class="my-4">
-	        <h2 th:text="${totalReportedCases}" class="display-4"></h2>
+	        <h2 th:text="${#numbers.formatDecimal(totalReportedCases, 0, 'POINT', 0, 'POINT')}" class="display-4"></h2>
 	        <p class="lead">Casos en el mundo</p>
 	        <p class="lead">Nuevos casos reportados desde ayer:</p>
 	        <p><span th:text="${totalNewCases}"></span></p>
