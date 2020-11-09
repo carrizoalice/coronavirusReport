@@ -3,6 +3,9 @@ package com.ac.report.Controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,14 +28,21 @@ public class SearchContryController {
 		List<LocationStats> searchResult = new ArrayList<>();
 		
 			if(searchString != null){
-		       for (LocationStats l : allStats) {
-				if(l.getCountry().equals(searchString)) {					
-					searchResult.add(l);
-					System.out.println("me agregó este: " + l.getCountry());
+		       for (LocationStats locationstats : allStats) {
+				if(locationstats.getCountry().equals(searchString)) {					
+					searchResult.add(locationstats);
+					System.out.println("me agregó este: " + locationstats.getCountry());
 					}
 		       }
 			}
-			System.out.println("String: " + searchString);	
+			
+			if(searchResult == null || searchResult.isEmpty())
+			{
+				String searchResultError = "No se ha encontrado el país, por favor intente nuevamente.";
+				model.addAttribute("searchResultError", searchResultError);
+			}
+			
+			System.out.println("String: " + searchString);				
 		
 		model.addAttribute("searchResult", searchResult);
 		return "searchcountry";		
