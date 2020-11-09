@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.ac.report.Models.LocationStats;
 import com.ac.report.Services.CoronavirusDataService;
-import com.ac.report.Services.DateService;
 
 
 
@@ -23,9 +22,6 @@ public class HomeController {
 	
 	@Autowired
 	CoronavirusDataService conoraVirusDataService;
-	
-	@Autowired
-	DateService dateService;
 	
 	@GetMapping("/")
 	public String home(Model model) {
@@ -42,5 +38,6 @@ public class HomeController {
 	    model.addAttribute("dateNow", dateNow);
 		
 		return "home";
-	}
+	}	
+
 }

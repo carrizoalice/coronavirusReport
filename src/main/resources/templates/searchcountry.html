@@ -26,12 +26,6 @@
       <!-- open container -->     
       <div class="container">
         <div class="row">
-	        <div class=" col-12 mb-4">
-			    <form th:action="@{/search}" method="post" th:object="${searchString}" class="form-inline my-2 my-lg-0 mr-auto">
-			      <input class="form-control mr-sm-2" type="text" placeholder="Search" name="searchString">
-			      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-			    </form>			    
-	        </div>
 	        <div class="col-12">
 	        <!-- open table --> 
 				<table class="table">
@@ -45,12 +39,12 @@
 				    </tr>
 				  </thead>
 				  <tbody>
-				    <tr th:each="locationstat : ${locationStats}">
+				    <tr th:each="locationstat : ${searchResult}">
 				      <th scope="row"></th>
 				      <td th:text="${locationstat.state != ''}? ${locationstat.state} : '-'" th:classappend="${locationstat.country == 'Argentina'}? argstrong"></td>
-				      <td th:text="${locationstat.country}" th:classappend="${locationstat.country == 'Argentina'}? argstrong"></td>				      				      
+				      <td th:text="${locationstat.country}" th:classappend="${locationstat.country == 'Argentina'}? argstrong"></td>
 				      <td th:text="${locationstat.latestTotalCases}" th:classappend="${locationstat.country == 'Argentina'}? argstrong" class="text-center">0</td>
-				      <td th:text="${locationstat.diffFromPrevDay}" th:classappend="${locationstat.country == 'Argentina'}? argstrong" class="text-center">0</td>
+				      <td th:text="${locationstat.diffFromPrevDay}" th:classappend="${locationstat.country == 'Argentina'}? argstrong" class="text-center">0</td>				      				      
 				    </tr>
 				  </tbody>
 				</table>          
@@ -65,12 +59,3 @@
 		<script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js}" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	</body>
 </html>	
-
-
-
-
-
-
-
-
-
