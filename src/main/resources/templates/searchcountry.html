@@ -31,7 +31,7 @@
 				<table class="table">
 				  <thead>
 				    <tr>
-				      <th scope="col">#</th>
+				      <th scope="col" class="text-center">#</th>
 				      <th scope="col">Estado</th>
 				      <th scope="col">País</th>
 				      <th scope="col">Total de casos</th>
@@ -39,8 +39,8 @@
 				    </tr>
 				  </thead>
 				  <tbody>
-				    <tr th:each="locationstat : ${searchResult}">
-				      <th scope="row"></th>
+				    <tr th:each="locationstat, iterator : ${searchResult}">				      
+				      <td th:text="${iterator.index+1}" th:classappend="${locationstat.country == 'Argentina'}? argstrong" class="text-center"></td>
 				      <td th:text="${locationstat.state != ''}? ${locationstat.state} : '-'" th:classappend="${locationstat.country == 'Argentina'}? argstrong"></td>
 				      <td th:text="${locationstat.country}" th:classappend="${locationstat.country == 'Argentina'}? argstrong"></td>
 				      <td th:text="${locationstat.latestTotalCases}" th:classappend="${locationstat.country == 'Argentina'}? argstrong" class="text-center">0</td>
