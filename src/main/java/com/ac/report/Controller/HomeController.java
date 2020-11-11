@@ -4,8 +4,11 @@ package com.ac.report.Controller;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,7 +24,9 @@ import com.ac.report.Services.CoronavirusDataService;
 public class HomeController {
 	
 	@Autowired
-	CoronavirusDataService conoraVirusDataService;
+	CoronavirusDataService conoraVirusDataService;	
+	
+	List<String> countryTotal = new ArrayList<>();	
 	
 	@GetMapping("/")
 	public String home(Model model) {
@@ -30,12 +35,18 @@ public class HomeController {
 		int totalNewCases = allStats.stream().mapToInt(stat -> stat.getDiffFromPrevDay()).sum();
 		model.addAttribute("locationStats", conoraVirusDataService.getAllStats());
 		model.addAttribute("totalReportedCases", totalReportedCases);
-		model.addAttribute("totalNewCases", totalNewCases);
+		model.addAttribute("totalNewCases", totalNewCases);		
 
 		LocalDate localDate = LocalDate.now();
 		Locale spanishLocale = new Locale("es", "ES");
 	    String dateNow = localDate.format(DateTimeFormatter.ofPattern("EEEE, dd MMMM, yyyy", spanishLocale));	
 	    model.addAttribute("dateNow", dateNow);
+	    
+	    for(LocationStats locationstats : allStats) {
+	    	countryTotal.add(locationstats.getCountry());  
+	    	Set<String> optionList = new HashSet<String>(countryTotal);
+	    	model.addAttribute("optionList", optionList);	    	
+	    }
 		
 		return "home";
 	}	

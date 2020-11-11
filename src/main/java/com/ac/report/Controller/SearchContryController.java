@@ -1,7 +1,10 @@
 package com.ac.report.Controller;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
@@ -26,12 +29,11 @@ public class SearchContryController {
 	public String search(Model model, @RequestParam("searchString") String searchString) {
 		List<LocationStats> allStats = conoraVirusDataService.getAllStats();
 		List<LocationStats> searchResult = new ArrayList<>();
-		
 			if(searchString != null){
-		       for (LocationStats locationstats : allStats) {
-				if(locationstats.getCountry().equals(searchString)) {					
+		       for (LocationStats locationstats : allStats) {	  		    	
+				if(locationstats.getCountry().equals(searchString)) {						
 					searchResult.add(locationstats);
-					System.out.println("me agregó este: " + locationstats.getCountry());
+					System.out.println("País agregado: " + locationstats.getCountry());
 					}
 		       }
 			}
@@ -43,7 +45,7 @@ public class SearchContryController {
 			}
 			
 			System.out.println("String: " + searchString);				
-		
+			
 		model.addAttribute("searchResult", searchResult);
 		return "searchcountry";		
 	}
