@@ -25,6 +25,8 @@ public class SearchContryController {
 	@Autowired
 	CoronavirusDataService conoraVirusDataService;
 	
+	List<String> countryTotal = new ArrayList<>();
+	
 	@RequestMapping(value = "/search")
 	public String search(Model model, @RequestParam("searchString") String searchString) {
 		List<LocationStats> allStats = conoraVirusDataService.getAllStats();
@@ -44,8 +46,14 @@ public class SearchContryController {
 				model.addAttribute("searchResultError", searchResultError);
 			}
 			
-			System.out.println("String: " + searchString);				
+			System.out.println("String: " + searchString);
 			
+		    for(LocationStats locationstats : allStats) {
+		    	countryTotal.add(locationstats.getCountry());  
+		    	Set<String> optionList = new HashSet<String>(countryTotal);
+		    	model.addAttribute("optionList", optionList);	    	
+		    }	
+		    
 		model.addAttribute("searchResult", searchResult);
 		return "searchcountry";		
 	}

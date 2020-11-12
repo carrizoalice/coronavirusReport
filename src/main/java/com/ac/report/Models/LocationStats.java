@@ -3,12 +3,19 @@ package com.ac.report.Models;
 import java.util.Comparator;
 
 public class LocationStats{
+	private int position;
 	private String state;
 	private String country;
 	private int latestTotalCases;
 	private int diffFromPrevDay;
 	
 	
+	public int getPosition() {
+		return position;
+	}
+	public void setPosition(int position) {
+		this.position = position;
+	}
 	public int getDiffFromPrevDay() {
 		return diffFromPrevDay;
 	}
