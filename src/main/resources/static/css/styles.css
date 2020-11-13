@@ -8,8 +8,12 @@ body{
 	font-weight: 700;
 }
 
-.btn-send-content{
+.btn-send-content a{
 	display: flex;
+}
+
+a:hover{
+	text-decoration: none!important;
 }
 
 .jumbotron{
