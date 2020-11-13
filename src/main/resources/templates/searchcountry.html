@@ -37,7 +37,7 @@
 				      <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Buscar</button>
 				    </div>
 				  </div>
-				</form>			    
+				</form>							    
 	        </div>        
 	        <div class="col-12">	        
 	        <!-- open table --> 
@@ -60,7 +60,8 @@
 				      <td th:text="${locationstat.diffFromPrevDay}" th:classappend="${locationstat.country == 'Argentina'}? argstrong" class="text-center">0</td>				      				      
 				    </tr>
 				  </tbody>
-				</table>          
+				</table>
+				<div class="btn-send-content"><button class="btn btn-danger mt-4 ml-auto">Volver</button></div>          
 	          <!-- close table -->
 	          <p th:text="${searchResultError}"></p>
 	        </div>		

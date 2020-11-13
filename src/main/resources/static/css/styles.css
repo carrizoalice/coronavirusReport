@@ -7,3 +7,16 @@ body{
 .argstrong{
 	font-weight: 700;
 }
+
+.btn-send-content{
+	display: flex;
+}
+
+.jumbotron{
+	color: #ffffff;
+	background-color: #DE03AC!important;
+}
+
+.jumbotron h1{
+	font-weight: 800;
+}
